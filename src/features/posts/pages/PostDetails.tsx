@@ -97,22 +97,30 @@ export default function PostDetails() {
   }
 
   return (
-    <div className="flex gap-3">
-      <div>
+    <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+      <div className="hidden md:block">
         <NavigateBackIconButton />
       </div>
       <div className="flex flex-col gap-4 w-full">
         <Card>
           <div className="flex flex-col gap-2">
-            <div className="flex justify-between">
+            <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
+                <div className="md:hidden">
+                  <NavigateBackIconButton className="h-9 w-9" />
+                </div>
                 <Avatar src={post.avatar} alt={post.name} size="md" />
-                <div className="flex items-center gap-2 text-sm text-slate-500">
+                <div className="flex flex-col text-slate-500 sm:flex-row sm:items-center sm:gap-2 sm:text-sm">
                   <span className="font-semibold text-slate-900">
                     {post.name}
                   </span>
-                  <span className="text-slate-300">•</span>
-                  <span>{formatRelativeTime(post.createdAt)}</span>
+                  <span className="text-xs text-slate-400 sm:hidden">
+                    {formatRelativeTime(post.createdAt)}
+                  </span>
+                  <div className="hidden items-center gap-2 sm:flex">
+                    <span className="text-slate-300">•</span>
+                    <span>{formatRelativeTime(post.createdAt)}</span>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -129,11 +137,11 @@ export default function PostDetails() {
               <>
                 <h1 className="text-2xl font-semibold">{post.title}</h1>
                 <p className="text-slate-600">{post.content}</p>
-                <div className="flex gap-3 mt-2">
+                <div className="flex flex-wrap gap-2 mt-2">
                   <button
                     type="button"
                     onClick={handleLike}
-                    className="flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
                   >
                     {hasLiked ? (
                       <HeartSolidIcon className="w-5 h-5 text-gray-700" />
@@ -145,7 +153,7 @@ export default function PostDetails() {
                   <button
                     type="button"
                     onClick={handleShare}
-                    className="flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
                   >
                     <ArrowTopRightOnSquareIcon className="w-5 h-5" />
                     <span>Compartir</span>

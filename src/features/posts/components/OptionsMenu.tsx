@@ -28,7 +28,7 @@ export function OptionsMenu({
       <DropdownMenuTrigger asChild>
         <IconButton
           icon={<EllipsisHorizontalIcon className="w-6 h-6" />}
-          className="hover:bg-gray-300 p-1"
+          className="h-10 w-10 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
           {...triggerProps}
         />
       </DropdownMenuTrigger>

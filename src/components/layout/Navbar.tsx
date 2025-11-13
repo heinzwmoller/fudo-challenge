@@ -32,7 +32,7 @@ export function Navbar() {
             <DropdownMenuTrigger asChild>
               <IconButton
                 icon={<Avatar src={user.avatar} alt={user.name} size="sm" />}
-                className="p-1 bg-gray-100 hover:bg-gray-200"
+                className="h-11 w-11 bg-gray-100 hover:bg-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
                 aria-label="Abrir menú de sesión"
               />
             </DropdownMenuTrigger>

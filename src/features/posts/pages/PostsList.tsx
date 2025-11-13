@@ -4,7 +4,7 @@ import { PostCard } from "../components/PostCard";
 import type { Post } from "@/api/types";
 import { PostInput } from "../components/PostInput";
 import { usePostsList } from "../hooks";
-import { Button, ErrorState } from "@/components/ui";
+import { Button, ErrorState, IconButton } from "@/components/ui";
 import { PostCardSkeleton } from "../components/PostCardSkeleton";
 
 export default function PostsList() {
@@ -82,14 +82,12 @@ export default function PostsList() {
         )}
       </div>
       {showScrollTop && (
-        <Button
+        <IconButton
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 shadow-lg"
-          variant="primary"
+          className="fixed bottom-5 right-5 z-50 h-12 w-12 bg-gray-900 text-white shadow-lg hover:bg-gray-800 sm:bottom-6 sm:right-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
           aria-label="Volver arriba"
-        >
-          <ArrowUpIcon className="h-5 w-5" />
-        </Button>
+          icon={<ArrowUpIcon className="h-6 w-6" />}
+        />
       )}
     </div>
   );

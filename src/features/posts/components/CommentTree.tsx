@@ -101,21 +101,26 @@ function CommentTreeInner({ comment, depth = 0 }: CommentTreeProps) {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-sm text-gray-600 ">
-              <span className="font-semibold text-gray-900 ">
+          <div className="relative pb-1">
+            <div className="flex flex-col pr-12 text-sm text-gray-600 sm:flex-row sm:items-center sm:gap-2">
+              <span className="font-semibold text-gray-900">
                 {comment.name}
               </span>
-              <span>•</span>
-              <span>{formatRelativeTime(comment.createdAt)}</span>
+              <span className="text-xs text-gray-500 sm:hidden">
+                {formatRelativeTime(comment.createdAt)}
+              </span>
+              <div className="hidden items-center gap-2 sm:flex">
+                <span className="text-gray-300">•</span>
+                <span>{formatRelativeTime(comment.createdAt)}</span>
+              </div>
             </div>
-            <div>
+            <div className="absolute right-0 top-0">
               <OptionsMenu onEdit={startEdit} onDelete={openDelete} />
             </div>
           </div>
 
           {!isEditing ? (
-            <p className="text-gray-700 mb-2">{comment.content}</p>
+            <p className="text-gray-700 mb-3">{comment.content}</p>
           ) : (
             <div className="mb-2">
               <EditCommentInput
@@ -129,7 +134,7 @@ function CommentTreeInner({ comment, depth = 0 }: CommentTreeProps) {
           )}
 
           {!isEditing && (
-            <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
+            <div className="flex flex-wrap items-center gap-2 text-gray-500 mb-2">
               <LikeButton
                 targetId={comment.id}
                 initialRange={150}
@@ -137,7 +142,7 @@ function CommentTreeInner({ comment, depth = 0 }: CommentTreeProps) {
               />
               <button
                 onClick={openReply}
-                className="flex items-center gap-2 hover:text-gray-700"
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2"
               >
                 <ChatBubbleOvalLeftIcon className="w-4 h-4" />
                 <span>Responder</span>

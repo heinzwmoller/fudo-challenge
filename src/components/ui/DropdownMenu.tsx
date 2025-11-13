@@ -13,12 +13,14 @@ export const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 // Content
 export const DropdownMenuContent = ({
   className,
-  sideOffset = 4,
+  sideOffset = 8,
+  collisionPadding = 12,
   ...props
 }: DropdownMenuPrimitive.DropdownMenuContentProps) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       sideOffset={sideOffset}
+      collisionPadding={collisionPadding}
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white p-1 shadow-lg",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",

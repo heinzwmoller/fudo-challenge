@@ -119,10 +119,15 @@ export function PostCard({ post }: PostCardProps) {
       <div className="flex justify-between items-center mb-3">
         <div className="flex items-center gap-3">
           <Avatar src={post.avatar} alt={post.name} size="sm" />
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          <div className="flex flex-col gap-1 text-slate-500 sm:flex-row sm:items-center sm:gap-2 sm:text-sm">
             <span className="font-semibold text-slate-900">{post.name}</span>
-            <span className="text-slate-300">•</span>
-            <span>{formatRelativeTime(post.createdAt)}</span>
+            <span className="text-xs text-slate-400 sm:hidden">
+              {formatRelativeTime(post.createdAt)}
+            </span>
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="text-slate-300">•</span>
+              <span>{formatRelativeTime(post.createdAt)}</span>
+            </div>
           </div>
         </div>
         {!isEditing && (
@@ -153,20 +158,20 @@ export function PostCard({ post }: PostCardProps) {
             <p className="text-slate-600 line-clamp-3">{post.content}</p>
           </Link>
 
-          <div className="flex items-center gap-4 text-sm pt-3 mt-3 text-slate-500">
+          <div className="flex flex-wrap items-center gap-2 pt-3 mt-3">
             <LikeButton targetId={post.id} />
             <Link
               to={`/posts/${post.id}`}
-              className="flex items-center gap-1 hover:text-slate-700 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
             >
-              <ChatBubbleOvalLeftIcon className="w-4 h-4" />
+              <ChatBubbleOvalLeftIcon className="w-5 h-5" />
               <span>Comentar</span>
             </Link>
             <button
-              className="flex items-center gap-1 hover:text-slate-700 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
               onClick={handleShare}
             >
-              <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
               <span>Compartir</span>
             </button>
           </div>

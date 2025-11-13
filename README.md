@@ -120,3 +120,17 @@ docker run --rm -p 8080:80 fudo-challenge
 ```
 
 El servidor usa `nginx:alpine` y redirige todas las rutas al `index.html` para que React Router funcione correctamente con el enrutado del lado del cliente.
+
+## CI/CD y despliegue
+
+- **Integración continua**: el flujo `.github/workflows/test.yml` corre `npm install`, `npm run lint` y `npm run test` en cada push a `main`. Si algo falla, el pipeline lo anuncia.
+- **Despliegue continuo**: Vercel está conectado al repositorio de GitHub; cualquier push genera automáticamente un nuevo deploy (branches → preview, `main` → producción).
+- **Compatibilidad con React Router**: se incluye `vercel.json` con el rewrite:
+
+  ```json
+  {
+    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  }
+  ```
+
+  Esto asegura que las rutas definidas en React Router funcionen al refrescar la página o acceder directamente a `posts/:id`, `account`, `help`, etc.

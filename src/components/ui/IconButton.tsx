@@ -10,7 +10,7 @@ interface IconButtonProps
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ icon, label = "", className, ...props }, ref) => {
     const iconButtonClassName = cn(
-      "rounded-full transition-colors flex items-center",
+      "rounded-full transition-colors flex items-center justify-center",
       className
     );
 

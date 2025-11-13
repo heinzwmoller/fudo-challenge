@@ -6,7 +6,7 @@ import { AuthProvider } from "@/features/auth";
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </AuthProvider>
   );
 }

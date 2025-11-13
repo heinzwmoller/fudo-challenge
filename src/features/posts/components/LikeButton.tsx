@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartSolidIcon } from "@heroicons/react/24/solid";
+import { cn } from "@/lib/utils";
 
 const DEFAULT_RANGE = 300;
 
@@ -44,7 +45,10 @@ export function LikeButton({
     <button
       type="button"
       onClick={handleToggleLike}
-      className={`flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors ${className}`}
+      className={cn(
+        "inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2",
+        className
+      )}
     >
       {hasLiked ? (
         <HeartSolidIcon className={`${iconClass} text-gray-700`} />
