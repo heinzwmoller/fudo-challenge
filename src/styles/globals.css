@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-background: 248 250 252;
+    --color-text-primary: 15 23 42;
+  }
+
+  body {
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-text-primary));
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
