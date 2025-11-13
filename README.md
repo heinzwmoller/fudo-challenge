@@ -41,6 +41,26 @@ Estas son las rutas que tiene la aplicación:
 - `/help`: Centro de ayuda con preguntas frecuentes en formato colapsable.
 - `*`: Cualquier otra ruta que no exista te lleva a la página de `NotFound`.
 
+## Estructura del proyecto
+
+El código está organizado siguiendo una arquitectura basada en features:
+
+```
+src/
+├── api/              # Configuración de API, hooks de React Query y tipos
+├── app/              # Configuración de la app (router, providers)
+├── components/       # Componentes reutilizables (UI y layout)
+├── features/         # Módulos por funcionalidad (posts, auth, account, help)
+├── lib/              # Utilidades y configuración (queryClient, utils)
+├── layouts/          # Layouts compartidos (RootLayout)
+└── styles/           # Estilos globales
+```
+
+- **`features/`**: Cada feature agrupa sus componentes, hooks, páginas y tipos relacionados. Por ejemplo, `posts/` contiene todo lo relacionado con posts y comentarios.
+- **`components/ui/`**: Componentes de UI reutilizables (botones, modales, inputs, etc.).
+- **`components/layout/`**: Componentes de layout como `Navbar` y `Container`.
+- **`api/`**: Centraliza la comunicación con el backend, incluyendo hooks de React Query para posts y comentarios.
+
 ## Scripts
 
 Los comandos que necesitas para trabajar con el proyecto:
